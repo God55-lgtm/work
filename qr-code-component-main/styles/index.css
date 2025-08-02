@@ -33,11 +33,11 @@ h2,p {
 
 h2 {
     color: hsl(217, 44%, 30%);
-    margin-top: 30px;
+    margin-top: 10px;
     font-weight: 400;
 }
 p {
-    margin-top: 20px;
+    margin-top: 17px;
     font-weight: 700;
     color: rgba(19, 18, 18, 0.882);
 }
@@ -56,4 +56,22 @@ p {
     border-color: hsl(212, 45%, 89%);
 
 }
+
+
+
+.mobile-button {
+    margin-left: 60px;
+    border-style: solid;
+    border-color: hsl(217, 43%, 75%);
+    width: 100px;
+    height: 30px;
+}
+
+.desktop-button {
+    border-style: solid;
+    border-color: hsl(217, 43%, 75%);
+    width: 100px;
+    height: 30px;
+}
+
 
