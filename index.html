@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Amoroso Premium - Naomi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(45deg, #e94560, #d32f75);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,30 100,0 L100,100 Q50,70 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .special-offer {
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            color: #000;
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .service-card {
+            background: linear-gradient(145deg, #1f4068, #1b1b2f);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            border: 1px solid #e94560;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.3);
+        }
+        
+        .card-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .card-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e94560;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: #ffcc70;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .card-description {
+            color: #c9d6df;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .price {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .usd-price {
+            color: #4caf50;
+            font-size: 1.3rem;
+        }
+        
+        .cup-price {
+            color: #2196f3;
+            font-size: 1.3rem;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #f44336;
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 5px;
+        }
+        
+        .discount {
+            background: linear-gradient(45deg, #e94560, #d32f75);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .feature {
+            background: rgba(233, 69, 96, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .footer-note {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            font-style: italic;
+            color: #c9d6df;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+        
+        .heart {
+            color: #e94560;
+            font-size: 1.8rem;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+        
+        .chacal-note {
+            color: #ffcc00;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .header-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #ffcc70;
+            text-shadow: 0 0 10px rgba(255, 204, 112, 0.5);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .catalog {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .special-offer {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
+        
+        .fire {
+            display: inline-block;
+            color: #ff9900;
+            animation: fire 1s infinite alternate;
+        }
+        
+        @keyframes fire {
+            from { text-shadow: 0 0 5px #ff3300; }
+            to { text-shadow: 0 0 20px #ff9900, 0 0 30px #ff3300; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-icon">
+                <i class="fas fa-heart pulse"></i>
+            </div>
+            <h1>Catálogo Amoroso Premium</h1>
+            <div class="subtitle">Servicios exclusivos para Naomi</div>
+            <div class="special-offer">
+                🎉 PROMOCIÓN ESPECIAL NAOMI 🎉 - 30% de descuento en todos los servicios + 5% extra si gritas "¡Dame más pinga!"
+            </div>
+        </header>
+        
+        <div class="catalog" id="catalog">
+            <!-- Servicios generados por JavaScript -->
+        </div>
+        
+        <div class="footer-note">
+            <p><i class="fas fa-star"></i> Todos los precios incluyen IVA (Impuesto al Valor Amoroso)</p>
+            <p><i class="fas fa-exchange-alt"></i> Tasa de cambio: 1 USD = 390 CUP (Cupido's Universal Passion)</p>
+            <p class="chacal-note"><i class="fas fa-music"></i> Servicio con música de El Chacal incluido en paquetes premium</p>
+            <p><i class="fas fa-heart heart"></i> Este catálogo es una broma romántica. Disfruta con amor y pasión <i class="fas fa-heart heart"></i></p>
+        </div>
+    </div>
+
+    <script>
+        // Tasa de cambio
+        const USD_TO_CUP = 390;
+        
+        // Servicios disponibles
+        const services = [
+            {
+                title: "Sexo Express (15 min)",
+                description: "Una sesión rápida pero intensa. Posición básica a elección. ¡Perfecto para un descanso en el trabajo!",
+                image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 5,
+                duration: "15 minutos",
+                discount: true,
+                features: ["Posición básica", "Rápido y efectivo", "Sin preliminares"]
+            },
+            {
+                title: "Sexo Descontrolado <i class='fire'></i>",
+                description: "Pasión animal donde todo vale. Si gritas '¡Dame más pinga!', obtienes 5 min extra gratis. ¡Salvaje y apasionado!",
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 25,
+                duration: "30-45 min",
+                discount: true,
+                features: ["Intensidad máxima", "Gritos permitidos", "Extra por frase clave"]
+            },
+            {
+                title: "La Revancha <i class='fas fa-redo'></i>",
+                description: "¿Quedaste con ganas? Segunda ronda inmediata para satisfacer todos tus deseos. ¡Doble placer garantizado!",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 18,
+                duration: "Sesión extra",
+                discount: true,
+                features: ["Segunda ronda", "Sin espera", "Placer continuo"]
+            },
+            {
+                title: "Maratón Amoroso <i class='fas fa-running'></i>",
+                description: "Todo el día con más de 2 encuentros. Incluye hidratación y recuperación. ¡Resistencia a prueba!",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 80,
+                duration: "Todo el día",
+                discount: true,
+                features: ["Múltiples encuentros", "Hidratación incluida", "Recuperación post-sesión"]
+            },
+            {
+                title: "Aventura en el Baño <i class='fas fa-shower'></i>",
+                description: "Juegos acuáticos con final sorpresa. Incluye toalla suave y ambientación con velas. ¡Humedad garantizada!",
+                image: "https://images.unsplash.com/photo-1533090368676-1fd25485db88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 20,
+                location: "Baño",
+                discount: false,
+                features: ["Ambiente húmedo", "Toalla premium", "Juegos acuáticos"]
+            },
+            {
+                title: "Balcón con Vistas <i class='fas fa-city'></i>",
+                description: "Emoción al aire libre con riesgo controlado. Para parejas aventureras que buscan adrenalina. ¡Que vean los vecinos!",
+                image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 25,
+                location: "Balcón",
+                discount: true,
+                features: ["Vistas panorámicas", "Adrenalina incluida", "Posición de riesgo"]
+            },
+            {
+                title: "Peligro Público <i class='fas fa-exclamation-triangle'></i>",
+                description: "La emoción de lo prohibido en lugar discreto pero público. ¡Riesgo máximo de ser descubiertos!",
+                image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 30,
+                location: "Lugar público",
+                discount: false,
+                features: ["Emoción extrema", "Posibilidad de público", "Adrenalina pura"]
+            },
+            {
+                title: "Sobre la Mesa <i class='fas fa-utensils'></i>",
+                description: "Usando mobiliario para mayor placer. Posición dominante o sumisa. ¡Los cubiertos no están incluidos!",
+                image: "https://images.unsplash.com/photo-1505692952047-1a78307da8f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 15,
+                position: "Sobre mesa",
+                discount: true,
+                features: ["Uso de mobiliario", "Dominante/sumisa", "Sin límites"]
+            },
+            {
+                title: "Contra la Taquilla <i class='fas fa-archive'></i>",
+                description: "Apoyados contra mueble sólido para intensidad garantizada. ¡Resistencia a prueba de terremotos!",
+                image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 15,
+                position: "Contra mueble",
+                discount: false,
+                features: ["Soporte sólido", "Angulo perfecto", "Impacto máximo"]
+            },
+            {
+                title: "Suelo con Estilo <i class='fas fa-couch'></i>",
+                description: "En el piso con cojines y alfombra suave para mayor comodidad. ¡Caídas con estilo garantizado!",
+                image: "https://images.unsplash.com/photo-1501084817091-a4f3d1d19e07?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 12,
+                position: "En el suelo",
+                discount: true,
+                features: ["Alfombra premium", "Cojines de lujo", "Estilo garantizado"]
+            },
+            {
+                title: "69 Complementario <i class='fas fa-sync-alt'></i>",
+                description: "La posición mutuamente satisfactoria. Equipo sincronizado para placer simultáneo. ¡Doble acción!",
+                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 22,
+                position: "69",
+                discount: false,
+                features: ["Placer mutuo", "Sincronización", "Doble satisfacción"]
+            },
+            {
+                title: "Mamada Especial <i class='fas fa-lips'></i>",
+                description: "Técnicas expertas que te harán gritar. Incluye juego previo y final sorpresa. ¡Para no parar de gemir!",
+                image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 20,
+                service: "Oral",
+                discount: true,
+                features: ["Técnica experta", "Juego previo", "Final sorpresa"]
+            },
+            {
+                title: "Cena Romántica <i class='fas fa-candle-holder'></i>",
+                description: "Cena gourmet con velas, música de El Chacal y pasión nocturna. Incluye postre especial sobre la mesa.",
+                image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 45,
+                package: "Completo",
+                discount: true,
+                features: ["Velas románticas", "Música de El Chacal", "Menú gourmet"]
+            },
+            {
+                title: "Arroz Frito + Pasión <i class='fas fa-utensil-spoon'></i>",
+                description: "Cocina especial (arroz frito con malta) seguido de sesión apasionada con besos y caricias. ¡Sabor y placer!",
+                image: "https://images.unsplash.com/photo-1490718720478-364f07a2e9c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 35,
+                package: "Gastronómico",
+                discount: false,
+                features: ["Arroz frito especial", "Malta fría", "Sesión apasionada"]
+            },
+            {
+                title: "Baile Exótico <i class='fas fa-music'></i>",
+                description: "Show personalizado con vestuario especial y música a elección. Incluye interacción completa.",
+                image: "https://images.unsplash.com/photo-1561212024-cb9ad0c331b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 30,
+                special: "Baile",
+                discount: true,
+                features: ["Vestuario especial", "Música personalizada", "Interacción completa"]
+            },
+            {
+                title: "Juego de Ataduras <i class='fas fa-handcuffs'></i>",
+                description: "Sesión con amarre suave a la cama. Incluye pañuelo de seda y juego de roles. ¡Sumisión controlada!",
+                image: "https://images.unsplash.com/photo-1527689638836-411945a2b57a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 28,
+                special: "Amarres",
+                discount: false,
+                features: ["Seda premium", "Juego de roles", "Seguridad garantizada"]
+            },
+            {
+                title: "Día Completo Premium <i class='fas fa-crown'></i>",
+                description: "24 horas de servicio completo: desayuno en cama, aventuras varias y masaje final. ¡Lujo total para Naomi!",
+                image: "https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+                priceUSD: 150,
+                duration: "24 horas",
+                discount: true,
+                features: ["Servicio completo", "Aventuras múltiples", "Masaje relajante"]
+            }
+        ];
+        
+        // Generar catálogo
+        const catalog = document.getElementById('catalog');
+        
+        services.forEach(service => {
+            // Aplicar descuento especial para Naomi
+            const discountRate = service.discount ? 0.7 : 1; // 30% de descuento
+            const discountedPrice = service.priceUSD * discountRate;
+            const originalPrice = service.discount ? service.priceUSD : null;
+            
+            // Crear elemento de servicio
+            const serviceElement = document.createElement('div');
+            serviceElement.className = 'service-card';
+            
+            // Calcular precio en CUP
+            const priceCUP = discountedPrice * USD_TO_CUP;
+            const originalPriceCUP = originalPrice ? originalPrice * USD_TO_CUP : null;
+            
+            // Características HTML
+            let featuresHTML = '';
+            if (service.features) {
+                featuresHTML = '<div class="features">';
+                service.features.forEach(feature => {
+                    featuresHTML += `<div class="feature">${feature}</div>`;
+                });
+                featuresHTML += '</div>';
+            }
+            
+            serviceElement.innerHTML = `
+                <div class="card-image" style="background-image: url('${service.image}')">
+                    ${service.discount ? '<div class="card-tag">Promoción Naomi</div>' : ''}
+                    ${service.special ? `<div class="card-tag" style="left:15px; right:auto; background:#9c27b0;">${service.special}</div>` : ''}
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">${service.title}</h3>
+                    <p class="card-description">${service.description}</p>
+                    
+                    ${originalPrice ? `
+                        <div class="original-price">
+                            Precio original: $${originalPrice.toFixed(2)} USD / ${Math.round(originalPriceCUP)} CUP
+                        </div>
+                    ` : ''}
+                    
+                    <div class="price">
+                        <span class="usd-price">$${discountedPrice.toFixed(2)} USD</span>
+                        <span class="cup-price">${Math.round(priceCUP)} CUP</span>
+                    </div>
+                    
+                    ${service.discount ? `
+                        <div class="discount">30% DESCUENTO</div>
+                    ` : ''}
+                    
+                    ${featuresHTML}
+                </div>
+            `;
+            
+            catalog.appendChild(serviceElement);
+        });
+        
+        // Añadir efecto de fuego
+        const fireElements = document.querySelectorAll('.fire');
+        fireElements.forEach(el => {
+            el.innerHTML = "🔥";
+        });
+        
+        // Mensaje especial con música
+        setTimeout(() => {
+            alert("💖 Naomi, este catálogo es una broma pero se puede hacer realidad,con las oportunidades necesarias,desde el respeto y con amor,Kevin. ¡Te quiero mucho! 💖");
+            
+            // Crear elemento de audio para El Chacal
+            const audio = document.createElement('audio');
+            audio.src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"; // Música de ejemplo
+            audio.volume = 0.3;
+            audio.autoplay = true;
+            document.body.appendChild(audio);
+            
+            // Nota sobre El Chacal
+            const chacalNote = document.querySelector('.chacal-note');
+            chacalNote.innerHTML = "<i class='fas fa-music'></i> ¡Ahora sonando: El Chacal - Dame más pinga! <i class='fas fa-music'></i>";
+            chacalNote.classList.add('pulse');
+            
+        }, 3000);
+    </script>
+</body>
+</html>
