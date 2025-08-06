@@ -1,21 +1,19 @@
-Inter Variable Font
-===================
+Plus Jakarta Sans Variable Font
+===============================
 
-This download contains Inter as both a variable font and static fonts.
+This download contains Plus Jakarta Sans as both variable fonts and static fonts.
 
-Inter is a variable font with these axes:
-  slnt
+Plus Jakarta Sans is a variable font with this axis:
   wght
 
-This means all the styles are contained in a single file:
-  Inter-VariableFont_slnt,wght.ttf
+This means all the styles are contained in these files:
+  PlusJakartaSans-VariableFont_wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for Inter:
-  static/Inter-Regular.ttf
-  static/Inter-Bold.ttf
-  static/Inter-ExtraBold.ttf
+in those cases you can use the static font files for Plus Jakarta Sans:
+  static/PlusJakartaSans-Medium.ttf
+  static/PlusJakartaSans-ExtraBold.ttf
 
 Get started
 -----------
